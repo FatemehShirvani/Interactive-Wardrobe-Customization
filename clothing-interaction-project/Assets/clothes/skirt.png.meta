@@ -116,20 +116,20 @@ TextureImporter:
       name: skirt_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 9
-        width: 25
-        height: 15
+        x: 5
+        y: 10
+        width: 23
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3e46ba7216cf970e0800000000000000
-      internalID: -2271507042824133405
+      spriteID: d2b26078b3c8546db8facdd49c1d48a6
+      internalID: 273029764
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 469d66232ba5a4767940a5fa28b9c774
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      skirt_0: 273029764
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
