@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using System;
-public class ClickingPattern : MonoBehaviour, IPointerClickHandler
+public class ClickingColor: MonoBehaviour, IPointerClickHandler
 {
 
     public CustomizeClothing customizeClothing;
@@ -22,8 +22,8 @@ public class ClickingPattern : MonoBehaviour, IPointerClickHandler
     // todo: show visually that it is selected (green border or something)
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Pattern selected " + gameObject.name);
+        Debug.Log("Color selected " + gameObject.name);
         customizeClothing.clickedObject = gameObject;
-        customizeClothing.type = TypeEnum.pattern;
+        customizeClothing.type = TypeEnum.color;
     }
 }

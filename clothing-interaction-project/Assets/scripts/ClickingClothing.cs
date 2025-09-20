@@ -10,14 +10,14 @@ public class ClickingClothing : MonoBehaviour
     public Material OutlineMaterial; // assign your white shader material in inspector
     public float OutlineScale = 1.1f; // how much bigger the outline should be
 
-    private void Awake()
-    {
-        customizeClothing = Object.FindFirstObjectByType<CustomizeClothing>();
-    }
+    // private void Awake()
+    // {
+    // }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        customizeClothing = FindFirstObjectByType<CustomizeClothing>();
 
     }
 
