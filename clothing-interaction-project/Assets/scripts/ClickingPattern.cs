@@ -11,7 +11,11 @@ public class ClickingPattern : MonoBehaviour, IPointerClickHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        customizeClothing = FindFirstObjectByType<CustomizeClothing>();
+        // customizeClothing = FindFirstObjectByType<CustomizeClothing>();
+          CustomizeClothing[] allClothing = FindObjectsOfType<CustomizeClothing>(true);
+        if (allClothing.Length > 0)
+            customizeClothing = allClothing[0];
+
     }
 
     // Update is called once per frame
@@ -23,7 +27,13 @@ public class ClickingPattern : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Pattern selected " + gameObject.name);
-        customizeClothing.clickedObject = gameObject;
-        customizeClothing.type = TypeEnum.pattern;
+
+        RawImage patternRaw = transform.GetChild(0).GetComponent<RawImage>();
+
+        if (patternRaw == null || patternRaw.texture == null) return;
+
+        Texture2D tex = patternRaw.texture as Texture2D;
+
+        customizeClothing.ApplyPattern(tex);
     }
 }

@@ -17,7 +17,10 @@ public class ClickingClothing : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        customizeClothing = FindFirstObjectByType<CustomizeClothing>();
+        // customizeClothing = FindFirstObjectByType<CustomizeClothing>();
+        CustomizeClothing[] allClothing = FindObjectsOfType<CustomizeClothing>(true);
+        if (allClothing.Length > 0)
+            customizeClothing = allClothing[0];
 
     }
 
@@ -34,7 +37,7 @@ public class ClickingClothing : MonoBehaviour
         // This is called when the user clicks on the collider
         Debug.Log("Clothing selected " + gameObject.name);
 
-        customizeClothing.clothing = gameObject;
+        customizeClothing.SetClothing(gameObject);
 
         if (customizeClothing.currentOutline != null)
         {

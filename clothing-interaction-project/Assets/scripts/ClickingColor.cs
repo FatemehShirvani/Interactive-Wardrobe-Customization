@@ -5,13 +5,17 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using System;
 public class ClickingColor: MonoBehaviour, IPointerClickHandler
 {
-
+    
     public CustomizeClothing customizeClothing;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        customizeClothing = FindFirstObjectByType<CustomizeClothing>();
+        // customizeClothing = FindFirstObjectByType<CustomizeClothing>();
+          CustomizeClothing[] allClothing = FindObjectsOfType<CustomizeClothing>(true);
+        if (allClothing.Length > 0)
+            customizeClothing = allClothing[0];
+
     }
 
     // Update is called once per frame
@@ -23,7 +27,8 @@ public class ClickingColor: MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Color selected " + gameObject.name);
-        customizeClothing.clickedObject = gameObject;
-        customizeClothing.type = TypeEnum.color;
+        RawImage patternRaw = transform.GetChild(0).GetComponent<RawImage>();
+            
+        customizeClothing.ApplyColor(patternRaw.color);
     }
 }

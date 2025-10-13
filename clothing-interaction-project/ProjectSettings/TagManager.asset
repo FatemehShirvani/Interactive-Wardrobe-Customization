@@ -41,5 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: clothing1
+    uniqueID: 4218326865
+    locked: 0
+  - name: clothing2
+    uniqueID: 2009081799
+    locked: 0
+  - name: clothing3
+    uniqueID: 3676760967
+    locked: 0
   m_RenderingLayers:
   - Default
