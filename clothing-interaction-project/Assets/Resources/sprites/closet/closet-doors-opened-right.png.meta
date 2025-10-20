@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      closet-doors-opened-right_0: -3039677464930197047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

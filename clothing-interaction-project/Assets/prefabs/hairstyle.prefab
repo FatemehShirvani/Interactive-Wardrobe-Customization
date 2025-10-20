@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3047099846061199702}
   - component: {fileID: 2346271266140971728}
   - component: {fileID: 8388035062556122120}
-  - component: {fileID: 5830817673091875569}
+  - component: {fileID: 4582196287029356779}
   m_Layer: 0
   m_Name: hairstyle
   m_TagString: Untagged
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.31, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &5830817673091875569
+--- !u!114 &4582196287029356779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,12 +145,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 290883732675499132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db8588fc0b2348b59eb70b3736a39bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a5c538505ff14f798f8500b87c8a07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customizeCharacter: {fileID: 0}
-  OutlineMaterial: {fileID: 0}
-  OutlineScale: 1.2
+  partType: 1
+  defaultSelected: 0
+  characterManager: {fileID: 0}
+  mainBodyOutline: {fileID: 3036885874535922508}
 --- !u!1 &3036885874535922508
 GameObject:
   m_ObjectHideFlags: 0

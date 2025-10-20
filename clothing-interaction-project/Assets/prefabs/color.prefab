@@ -198,3 +198,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customizeClothing: {fileID: 0}
+  createRightPanel: {fileID: 0}
+  colorType: 0
