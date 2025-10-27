@@ -8,7 +8,6 @@ using System;
 public class CreateRightPanel : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Canvas canva;
 
     public RectTransform colorContainer;
      public RectTransform colorAdviceContainer;
@@ -20,7 +19,6 @@ public class CreateRightPanel : MonoBehaviour
 
     public Button importButton;
 
-    public int pixelSize = 1;
 
 
 
@@ -97,12 +95,10 @@ public class CreateRightPanel : MonoBehaviour
 
         byte[] pngData = pixelatedTexture.EncodeToPNG();
 
-        // 📂 Save to a file (you can change the path)
-        string savePath = Path.Combine(Application.persistentDataPath, "pixelated_image3.png");
+        string savePath = Path.Combine(Application.persistentDataPath, "pixelated_image.png");
         File.WriteAllBytes(savePath, pngData);
 
         Debug.Log($"Saved pixelated image to: {savePath}");
-
 
         return pixelatedTexture;
     }
@@ -135,6 +131,7 @@ public class CreateRightPanel : MonoBehaviour
         textures.Add(texture);
 
         GameObject pattern = Instantiate(prefabPattern, patternContainer);
+        pattern.transform.SetSiblingIndex(1); // first child after button
         RawImage colorRaw = pattern.transform.GetChild(0).GetComponent<RawImage>();
         colorRaw.texture = texture;
     }
@@ -149,14 +146,12 @@ public class CreateRightPanel : MonoBehaviour
 
     void TaskOnClick()
     {
-        // TODO open file chooser; import img, pass it through pixel art thingy; add it as circle
 
         FileBrowser.SetFilters(true, new FileBrowser.Filter("Images", ".jpg", ".png", ".jpeg"), new FileBrowser.Filter("Text Files", ".txt", ".pdf"));
 
         FileBrowser.SetDefaultFilter(".jpg");
 
         FileBrowser.SetExcludedExtensions(".lnk", ".tmp", ".zip", ".rar", ".exe");
-
 
         StartCoroutine(ShowLoadDialogCoroutine());
     }
@@ -218,7 +213,6 @@ public class CreateRightPanel : MonoBehaviour
         }
         foreach (Color c in colors)
         {
-            Debug.Log("AddColorAdvice");
             GameObject color = Instantiate(prefabColor, colorAdviceContainer);
             RawImage colorRaw = color.transform.GetChild(0).GetComponent<RawImage>();
             colorRaw.color = c;

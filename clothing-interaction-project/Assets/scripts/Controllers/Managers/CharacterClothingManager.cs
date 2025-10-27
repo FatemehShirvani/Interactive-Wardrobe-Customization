@@ -15,10 +15,8 @@ public class CharacterClothingManager : MonoBehaviour
 
     void Awake()
     {
-        // Find all HangerInteractable objects in the scene
         HangerInteractable[] allClothing = FindObjectsOfType<HangerInteractable>(true);
 
-        // Filter by type
         allTops = allClothing.Where(c => c.type == ClothingType.Top).ToList();
         allBottoms = allClothing.Where(c => c.type == ClothingType.Bottom).ToList();
     }
@@ -38,7 +36,6 @@ public class CharacterClothingManager : MonoBehaviour
             currentlyEquippedBottom = clothing;
             bottomRenderer.GetComponent<SpriteRenderer>().sprite = clothing.GetComponent<SpriteRenderer>().sprite;
             bottomRenderer.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = clothing.GetComponent<SpriteRenderer>().sprite;
-            // clothing.GetComponent<SpriteRenderer>().enabled = false;
             clothing.gameObject.SetActive(false);
 
         }

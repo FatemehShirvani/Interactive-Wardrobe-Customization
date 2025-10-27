@@ -25,19 +25,11 @@ public class DrawerMouseEvent : MonoBehaviour
     {
         // This is called when the user clicks on the collider
         Debug.Log("drawer selected " + gameObject.name);
-        Debug.Log("clicked");
-        Debug.Log(Input.mousePosition);
-
         mouseDownPos = Input.mousePosition;
-
-
     }
 
     private void OnMouseUp()
     {
-        Debug.Log("click released");
-        Debug.Log(Input.mousePosition);
-        Debug.Log(mouseDownPos);
         if (closed)
         {
             if (isTop)

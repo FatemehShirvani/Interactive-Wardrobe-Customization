@@ -12,10 +12,10 @@ public class CharacterPartSelector : MonoBehaviour
 
     public CustomizeCharacterManager characterManager;
 
+    public GameObject mainBodyGreenOutline;
+    public GameObject mainHairGreenOutline;
     public GameObject mainBodyOutline;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (characterManager == null)
@@ -23,7 +23,6 @@ public class CharacterPartSelector : MonoBehaviour
 
         if (defaultSelected)
             Select();
-
     }
 
     private void OnMouseDown()
@@ -34,28 +33,44 @@ public class CharacterPartSelector : MonoBehaviour
     private void Select()
     {
         Debug.Log($"{partType} selected {gameObject.name}");
+        Transform outlineTransform = transform.Find("Outline");
+
         if (partType == CharacterPartType.Body)
         {
             characterManager.UpdateBodySprite(gameObject);
+            UpdatePartOutline(ref characterManager.leftBodyOutline, outlineTransform);  // outline of object in left panel
+
+            if (mainBodyOutline != null)
+            {
+                mainBodyOutline.GetComponent<SpriteRenderer>().sprite = outlineTransform.gameObject.GetComponent<SpriteRenderer>().sprite;
+
+            }
+            if (mainBodyGreenOutline != null)
+                mainBodyGreenOutline.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+
         }
         else if (partType == CharacterPartType.Hair)
         {
-            
             characterManager.UpdateHairstyleSprite(gameObject);
-            if (mainBodyOutline != null)
-                mainBodyOutline.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+            UpdatePartOutline(ref characterManager.leftHairOutline, outlineTransform);  // outline of object in left panel
+            if (mainHairGreenOutline != null)
+                mainHairGreenOutline.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
 
         }
+        
+    }
 
-
-        if (characterManager.currentOutline != null)
-            characterManager.currentOutline.SetActive(false);
-
-        Transform outlineTransform = transform.Find("Outline");
-        if (outlineTransform != null)
+    public void UpdatePartOutline(ref GameObject currentOutline, Transform newOutline)
+    {
+        if (currentOutline != null)
         {
-            outlineTransform.gameObject.SetActive(true);
-            characterManager.currentOutline = outlineTransform.gameObject;
+             currentOutline.SetActive(false);
+        }
+
+        if (newOutline != null)
+        {
+            newOutline.gameObject.SetActive(true);
+            currentOutline = newOutline.gameObject;
         }
     }
 

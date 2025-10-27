@@ -9,18 +9,23 @@ public class CustomizeCharacterManager : MonoBehaviour
     public GameObject bodyTypeSelected;
     public GameObject hairstyleSelected;
 
-    public GameObject currentOutline;
+    public GameObject leftBodyOutline;
+    public GameObject leftHairOutline;
 
 
     public GameObject character;
     public GameObject characterOutline;
+    public GameObject noseOutline;
     public GameObject hair;
 
+    public SpriteRenderer mainBodyGreenOutline;
+    public SpriteRenderer mainHairGreenOutline;
 
 
 
     private Material characterMaterial;
     private Material characterOutlineMaterial;
+    private Material noseOutlineMaterial;
 
 
     private Material hairMaterial;
@@ -34,6 +39,7 @@ public class CustomizeCharacterManager : MonoBehaviour
 
         characterMaterial = InstantiateMaterial(character);
         characterOutlineMaterial = InstantiateMaterial(characterOutline);
+        noseOutlineMaterial = InstantiateMaterial(noseOutline);
         hairMaterial = InstantiateMaterial(hair);
 
         Color defaultSkintone = new Color(0.80f, 0.60f, 0.45f);
@@ -98,6 +104,7 @@ public class CustomizeCharacterManager : MonoBehaviour
         if (mainBodyHairstyleRenderer == null) return;
 
         mainBodyHairstyleRenderer.sprite = hairstyleRenderer.sprite;
+    
 
         if (this.hairMaterial != null)
             mainBodyHairstyleRenderer.material = hairMaterial;
@@ -111,7 +118,7 @@ public class CustomizeCharacterManager : MonoBehaviour
         if (mainBodyRenderer == null) return;
 
         mainBodyRenderer.sprite = sprite;
-
+        
         if (characterMaterial != null)
             mainBodyRenderer.material = characterMaterial;
     }
@@ -197,6 +204,10 @@ public class CustomizeCharacterManager : MonoBehaviour
             // Outline (slightly darker)
             Color darker = c * 0.7f;
             ApplyToMaterial(characterOutlineMaterial, darker);
+            ApplyToMaterial(noseOutlineMaterial, darker);
+
+            
+            
         }
     
     }
@@ -206,6 +217,18 @@ public class CustomizeCharacterManager : MonoBehaviour
         {
             ApplyToMaterial(hairMaterial, c);
         }
+    }
+
+    public void RefreshMainOutlines()
+    {
+                SpriteRenderer mainBodyRenderer = mainBody.transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        if (mainBodyGreenOutline != null && mainBodyRenderer != null)
+            mainBodyGreenOutline.sprite = mainBodyRenderer.sprite;
+        SpriteRenderer hairRenderer = hair.GetComponent<SpriteRenderer>();
+
+        if (mainHairGreenOutline != null && hairRenderer != null)
+            mainHairGreenOutline.sprite = hairRenderer.sprite;
     }
         
 }

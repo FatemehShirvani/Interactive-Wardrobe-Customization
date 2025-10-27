@@ -17,6 +17,9 @@ public class CharacterSaveManager : MonoBehaviour
 
     private IEnumerator ShowSaveDialogCoroutine()
     {
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("JSON Files", ".json"));
+        FileBrowser.SetDefaultFilter(".json");
+        
        yield return FileBrowser.WaitForSaveDialog(
             pickMode: FileBrowser.PickMode.Files,
             allowMultiSelection: false,
@@ -26,12 +29,12 @@ public class CharacterSaveManager : MonoBehaviour
             saveButtonText: "Save"       
         );
      
-
+        
         if (FileBrowser.Success && FileBrowser.Result.Length > 0)
         {
             string path = FileBrowser.Result[0];
             if (!path.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
-        path += ".json";
+            path += ".json";
 
             SaveCharacter(path);
         }
@@ -83,7 +86,6 @@ public class CharacterSaveManager : MonoBehaviour
         FileBrowser.SetFilters(true, new FileBrowser.Filter("JSON Files", ".json"));
         FileBrowser.SetDefaultFilter(".json");
 
-        // Optional: exclude weird extensions
         FileBrowser.SetExcludedExtensions(".lnk", ".tmp", ".zip", ".rar", ".exe");
 
         yield return FileBrowser.WaitForLoadDialog(
@@ -111,7 +113,6 @@ public class CharacterSaveManager : MonoBehaviour
         CharacterSaveData data = JsonUtility.FromJson<CharacterSaveData>(json);
 
         // restore body and hair
-        // characterManager.SelectBodyByName(data.bodyTypeName);
 
         Sprite[] bodySprites = Resources.LoadAll<Sprite>("sprites/body");
         Sprite bodySprite = Array.Find(bodySprites, s => s.name == data.bodyTypeName);
@@ -141,6 +142,7 @@ public class CharacterSaveManager : MonoBehaviour
             characterManager.SetHairColor(data.hairColor);
         }
 
+        characterManager.RefreshMainOutlines();
 
 
         // restore clothing
@@ -177,7 +179,6 @@ public class CharacterSaveManager : MonoBehaviour
         {
             clothingManager.bottomRenderer.material.SetFloat("_UsePattern", 0f);
         }
-
 
         Debug.Log("Character loaded");
     }

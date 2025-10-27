@@ -4,20 +4,11 @@ using UnityEngine.EventSystems;
 
 public class ClothingSelector : MonoBehaviour
 {
-
     public CustomizeClothing customizeClothing;
-
-    public Material OutlineMaterial;
-    public float OutlineScale = 1.1f; // how much bigger the outline should be
-
-    // private void Awake()
-    // {
-    // }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // customizeClothing = FindFirstObjectByType<CustomizeClothing>();
         CustomizeClothing[] allClothing = FindObjectsOfType<CustomizeClothing>(true);
         if (allClothing.Length > 0)
             customizeClothing = allClothing[0];
@@ -30,8 +21,6 @@ public class ClothingSelector : MonoBehaviour
     }
 
 
-
-    // todo: show visually that it is selected (green border or something)
     private void OnMouseDown()
     {
         // This is called when the user clicks on the collider
@@ -51,8 +40,6 @@ public class ClothingSelector : MonoBehaviour
             
             customizeClothing.currentOutline = outlineTransform.gameObject;
         }
-        // TODO: create outline as a child SpriteRenderer
-
     }
 
 }

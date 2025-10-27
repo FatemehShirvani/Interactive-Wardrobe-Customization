@@ -32,8 +32,8 @@ public class CharacterRightPanel : MonoBehaviour
     new Color(0.85f, 0.50f, 0.40f), // copper red
 
        new Color(1.00f, 0.00f, 0.00f), // bright red
-    new Color(1.00f, 0.35f, 0.15f), // fiery orange
-    new Color(1.00f, 0.70f, 0.10f), // gold / yellow
+    new Color(1.00f, 0.35f, 0.15f), //  orange
+    new Color(1.00f, 0.70f, 0.10f), //  yellow
     new Color(0.20f, 0.85f, 0.20f), // bright green
     new Color(0.00f, 0.80f, 0.70f), // teal
     new Color(0.25f, 0.40f, 0.90f), // bright blue
@@ -41,11 +41,11 @@ public class CharacterRightPanel : MonoBehaviour
     new Color(0.40f, 0.80f, 1.00f), // sky blue
     new Color(0.60f, 0.20f, 0.85f), // violet
     new Color(0.90f, 0.10f, 0.60f), // hot pink
-    new Color(0.95f, 0.65f, 0.45f), // strawberry blonde (fits near orange-pink)
+    new Color(0.95f, 0.65f, 0.45f), // strawberry blonde 
     new Color(0.75f, 0.30f, 0.10f), // auburn (deep warm red-brown)
 
-    new Color(0.30f, 0.30f, 0.30f), // silver / grey
-    new Color(0.95f, 0.95f, 0.95f)  // platinum white
+    new Color(0.30f, 0.30f, 0.30f), //  grey
+    new Color(0.95f, 0.95f, 0.95f)  //  white
 };
 
     public List<Texture> textures = new List<Texture>();

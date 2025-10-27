@@ -59,9 +59,6 @@ public class CustomizeClothing : MonoBehaviour
         clothingMaterial.SetFloat("_UsePattern", 1f);
         clothingMaterial.SetTexture("_PatternTex", patternTexture);
     
-
-        // float patternScale = 2
-        // clothingMaterial.SetVector("_PatternScale", patternScale);
     }
 }
 

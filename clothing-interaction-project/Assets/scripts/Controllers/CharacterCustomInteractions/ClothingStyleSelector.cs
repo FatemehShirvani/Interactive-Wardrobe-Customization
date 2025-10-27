@@ -36,8 +36,6 @@ public class ClothingStyleSelector : MonoBehaviour, IPointerClickHandler
 
         colorAdvice = new ColorAdvice();
 
-
-
     }
 
     // Update is called once per frame
@@ -73,14 +71,4 @@ public class ClothingStyleSelector : MonoBehaviour, IPointerClickHandler
     }
 
 
-    // public void GetAdviceFromColor(Color color)
-    // {
-    //     foreach (var c in colorToAdvice)
-    //     {
-    //         if (color == c.Key)
-    //         {
-    //             createRightPanel.AddColorAdvice(c.Value);
-    //         }
-    //     }
-    // }
 }

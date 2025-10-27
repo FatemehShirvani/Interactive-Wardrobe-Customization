@@ -9,6 +9,7 @@ public class DoorInteractable : MonoBehaviour
     public GameObject closedLeftDoor;
     public GameObject closedRightDoor;
     private Vector3 mouseDownPos;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,17 +24,11 @@ public class DoorInteractable : MonoBehaviour
 
     private void OnMouseDown()
     {
-
         mouseDownPos = Input.mousePosition;
-
-
     }
 
     private void OnMouseUp()
     {
-        Debug.Log("click released");
-        Debug.Log(Input.mousePosition);
-        Debug.Log(mouseDownPos);
         if (closed)
         {
             if (isLeft)
@@ -66,7 +61,7 @@ public class DoorInteractable : MonoBehaviour
             }
             else
             { // right door
-                if (Input.mousePosition.x <=(mouseDownPos.x - 0)) // TODO see if we add dragging (just -20 instead or not)
+                if (Input.mousePosition.x <=(mouseDownPos.x - 0)) // we changed the drag to just a click (dragging: -20 )
                 {
                     gameObject.SetActive(false);
                     closedRightDoor.SetActive(true);

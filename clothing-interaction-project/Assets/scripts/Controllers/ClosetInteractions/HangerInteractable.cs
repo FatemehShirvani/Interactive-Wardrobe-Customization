@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ClothingType { Top, Bottom /*, Shoes, Hat, etc. */ }
+public enum ClothingType { Top, Bottom}
 
 
 public class HangerInteractable : MonoBehaviour
 {
     public List<GameObject> clothes; // all hangers in order
-    public int indexClickedHanger;                // index of clicked hanger
+    public int indexClickedHanger;   // index of clicked hanger
 
     private bool isDragging = false;
 

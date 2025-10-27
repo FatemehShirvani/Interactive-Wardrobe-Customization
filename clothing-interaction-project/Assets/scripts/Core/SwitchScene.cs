@@ -15,6 +15,8 @@ public class SwitchScene : MonoBehaviour
 
     private SelectablePart[] selectableParts;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +26,9 @@ public class SwitchScene : MonoBehaviour
         closetButton.onClick.AddListener(SwitchToCloset);
         selectableParts = FindObjectsOfType<SelectablePart>();
         
-
+        // by default, at start, in character mode
+        characterButton.interactable = false;
+        closetButton.interactable = true;
     }
 
     // Update is called once per frame
@@ -36,12 +40,16 @@ public class SwitchScene : MonoBehaviour
     public void SwitchToCloset()
     {
         SetCanvasState(false);
+        characterButton.interactable = true;
+        closetButton.interactable = false;
    
     }
 
     public void SwitchToCharacter()
     {
         SetCanvasState(true);
+        characterButton.interactable = false;
+        closetButton.interactable = true;
       
     }
     private void SetCanvasState(bool isCharacterMode)
