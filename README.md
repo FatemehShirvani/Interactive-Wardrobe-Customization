@@ -1,8 +1,14 @@
 # Interactive Wardrobe Customization
 
-Interactive Wardrobe Customization is a playful 2D wardrobe experience built around direct, tactile interaction. Players create a character, explore a closet, recolor garments, apply patterns, and assemble outfits through a pixel-art interface.
+Interactive Wardrobe Customization is a playful 2D fashion game built around direct, tactile interaction. Players experiment with clothing combinations, customize colors and patterns, and design outfits for different body types, skin tones, and hairstyles in a gamified pixel-art environment.
 
 ![Interactive character and closet customization interface](media/overview.png)
+
+## Interaction demo
+
+The interaction below shows a garment being removed from its hanger and dragged onto the character, where it snaps into place.
+
+![Dragging clothing from the interactive closet onto the character](media/interaction-demo.gif)
 
 ## Project context
 
@@ -16,24 +22,27 @@ The design goal was to make customization feel like manipulating a physical ward
 - **Constrained movement:** doors move horizontally, drawers move vertically, and hangers remain aligned with their rail so each object behaves as expected.
 - **Drag-and-snap dressing:** take clothing from its hanger and drag it onto the character; snapping makes successful placement clear and forgiving.
 - **Immediate feedback:** selection outlines, responsive panels, and visible state changes communicate what can be edited and what the player has chosen.
-- **Character customization:** switch body type and hairstyle, then recolor the body and hair with a palette.
-- **Clothing customization:** recolor garments, choose built-in patterns, or import a JPG/PNG pattern from the computer.
-- **Color guidance:** suggested colors help players explore compatible combinations without restricting their choices.
+- **Character customization:** select a body type and hairstyle, then click either the body or hair directly on the character to change its color from the right-hand panel.
+- **Clothing customization:** select a garment, browse colors and patterns by sliding through the available choices, and combine them to create an outfit.
+- **Custom colors:** select the **+** control and use the color ramp to add a new color.
+- **Advised colors:** whenever a color is selected, the interface displays matching colors under **Advised colors**. These suggestions support color exploration without restricting the player's choices.
+- **Custom patterns:** select the pattern **+** control and choose an image file from the computer. The imported image is pixelated so it remains visually consistent with the game's art style.
 - **Playful details:** the character's eyes follow the pointer, reinforcing that the world responds to the player.
-- **Discoverability:** an in-game help view explains the main interactions.
-- **Persistence and sharing:** save a character configuration as JSON, import it later, or export the composition as a PNG image.
+- **Scene navigation:** the buttons at the top of the interface switch between the character and closet views.
+- **Discoverability:** the **Help** button opens a pop-up that explains the available interactions.
+- **Persistence and sharing:** the camera button saves the character as a PNG screenshot, **Save** stores the character as JSON, and **Import** restores a character from a JSON file.
 
 ## Interface views
 
 ### Clothing customization
 
-Select a garment to open its editing controls, then combine colors and patterns or import a custom texture.
+Select a garment to open its editing controls. Browse the color and pattern rows, add a color with the color ramp, review the advised matching colors, or import a custom image pattern that is converted to the pixel-art style.
 
 ![Clothing color and pattern customization](media/clothing-customization.png)
 
 ### Character customization
 
-Choose the body type and hairstyle and adjust their colors through the palette-based controls.
+Choose a body type and hairstyle. Selecting the body or hair directly on the character opens its palette-based color controls in the panel on the right.
 
 ![Body and hairstyle customization](media/character-customization.png)
 
@@ -47,19 +56,26 @@ Choose the body type and hairstyle and adjust their colors through the palette-b
 | Remove a hanger | Drag it downward from the rail |
 | Dress the character | Drag a garment onto the character |
 | Edit an item | Select it to reveal the relevant controls |
-| Add a custom color or pattern | Select the **+** control and choose a color or image |
+| Browse colors and patterns | Slide through the rows of available choices |
+| Add a custom color | Select **+** and choose a color from the color ramp |
+| View matching colors | Select a color and review the **Advised colors** panel |
+| Add a custom pattern | Select **+** and choose an image file to pixelate and apply |
+| Switch views | Use the character and closet buttons at the top |
+| View instructions | Use the help button to open the explanation pop-up |
 | Save or restore a character | Use the save and import controls for JSON data |
 | Export an image | Use the camera control to save a PNG |
 
 ## Technical implementation
 
-The project is implemented in **Unity 6** and **C#**. Interaction responsibilities are separated so that input and movement logic remain close to the objects they control:
+The project is implemented in **Unity 6** and **C#**. The character, clothing, environment, interface, and other pixel-art sprites were created by the project team. Interaction responsibilities are separated so that input and movement logic remain close to the objects they control:
 
 - `ClosetInteractions` contains the door, drawer, hanger, clothing, and snapping behavior.
-- `CharacterCustomization` handles selectable body and hairstyle options.
-- `Managers` coordinate customization state and UI behavior.
-- `View` contains selection, panels, and pointer-responsive visual behavior.
-- `Utilities` provides color advice, screenshots, and JSON save/import functionality.
+- `CharacterCustomInteractions` handles color and pattern selection, clothing choices, body types, and hairstyles.
+- `ClosetInteractions` implements doors, drawers, hanger movement, garment dragging, and snapping.
+- `Managers` coordinate character customization, clothing state, and supporting UI logic.
+- `View` manages the right-hand panels, item-selection outlines, help interface, and pointer-responsive eye movement.
+- `Utilities` provides advised-color generation, PNG capture, and JSON save/import functionality.
+- `SwitchScene` connects the top navigation buttons to the character and closet views.
 
 The UI uses TextMesh Pro, and the project includes file-browser and color-picker components for importing patterns and choosing custom colors.
 
