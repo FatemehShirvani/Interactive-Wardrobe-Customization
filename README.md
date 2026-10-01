@@ -1,8 +1,8 @@
-# Purr and Pattern
+# Interactive Wardrobe Customization
 
-Purr and Pattern is a playful 2D wardrobe experience built around direct, tactile interaction. Players create a character, explore a closet, recolor garments, apply patterns, and assemble outfits through a pixel-art interface.
+Interactive Wardrobe Customization is a playful 2D wardrobe experience built around direct, tactile interaction. Players create a character, explore a closet, recolor garments, apply patterns, and assemble outfits through a pixel-art interface.
 
-![Purr and Pattern character and closet interface](media/overview.png)
+![Interactive character and closet customization interface](media/overview.png)
 
 ## Project context
 
