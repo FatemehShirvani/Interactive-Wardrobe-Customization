@@ -12,7 +12,7 @@ The interaction below shows a garment being removed from its hanger and dragged 
 
 ## Project context
 
-This project was developed for the **Advanced Programming of Interactive Systems** course during the 2025–2026 academic year by **Fatemeh Shirvani** and **Kimia Senichault**.
+This project was developed for the **Advanced Programming of Interactive Systems** course from **September to October 2025** by **Fatemeh Shirvani** and **Kimia Senichault**.
 
 The design goal was to make customization feel like manipulating a physical wardrobe instead of completing a sequence of forms. Interface elements therefore respond spatially: doors and drawers slide, hangers move along their rail, and garments can be pulled from the closet and snapped onto the character.
 
